@@ -12,6 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.gamble.vendor.VentaGamble.repository.VendedorRepository;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -21,6 +28,8 @@ import com.gamble.vendor.VentaGamble.repository.VendedorRepository;
 @Service
 @Transactional
 public class VendedorServiceImpl implements VendedorService {
+    
+    private final Path rootLocation = Paths.get("/home/aplicaciones/upload-dir");
     
     
     @Autowired
@@ -50,5 +59,20 @@ public class VendedorServiceImpl implements VendedorService {
     public VSgpVendedoresActivos obtenerVendedorByDocumento(String doc) {
         return vendedorRepository.findVendedorByDocumento(doc);
     }
+
+    @Override
+    public void subirMasivo(MultipartFile file) {
+        
+          try 
+          {
+            Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+
+          } catch (IOException ex) {
+             ex.fillInStackTrace();
+          }
+        
+    }
+    
+    
     
 }

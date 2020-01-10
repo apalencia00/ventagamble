@@ -8,6 +8,7 @@ package com.gamble.vendor.VentaGamble.service;
 import com.gamble.vendor.VentaGamble.entity.VSgpVendedoresActivos;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -48,7 +49,7 @@ public interface VendedorService {
 	 */
 	void eliminar(Integer id);
         
-        
+        void subirMasivo(MultipartFile file);
         
     
     

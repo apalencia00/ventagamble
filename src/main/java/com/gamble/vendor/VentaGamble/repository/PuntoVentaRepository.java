@@ -20,7 +20,10 @@ import org.springframework.stereotype.Repository;
 public interface PuntoVentaRepository extends CrudRepository<VSgpZonavscdavspuntos, Long> {
     
     
-    @Query(value = "SELECT * FROM GAMBLE.V_SGP_ZONAVSCDAVSPUNTOS V WHERE CODIGOPUNTO = ?1", nativeQuery = true)
+    @Query(value = "SELECT V.* FROM NOMINA.V_SGP_CONSULTAZONAVSCDAVSPUNTO V WHERE V.CODIGOPUNTO = ?1", nativeQuery = true)
     public VSgpZonavscdavspuntos findPuntoVentaByCodigoZona(@Param("codigo") String codigo );
+    
+    
+
     
 }

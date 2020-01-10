@@ -20,10 +20,10 @@ import org.springframework.stereotype.Repository;
 public interface PersonaRepository extends CrudRepository<Personas, Long> {
     
     @Override
-    @Query(value= "SELECT * FROM GAMBLE.PERSONAS", nativeQuery = true)
+    @Query(value= "SELECT * FROM NOMINA.V_SGP_PERSONAS", nativeQuery = true)
     public List<Personas> findAll();
     
-    @Query(value="SELECT NOMBRES FROM GAMBLE.PERSONAS p WHERE p.DOCUMENTO = ?1",nativeQuery = true)
+    @Query(value="SELECT NOMBRES FROM NOMINA.V_SGP_PERSONAS p WHERE p.DOCUMENTO = ?1",nativeQuery = true)
     public String find(@Param("doc") String doc);
     
 }

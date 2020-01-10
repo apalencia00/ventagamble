@@ -20,10 +20,10 @@ import org.springframework.stereotype.Repository;
 public interface VendedorRepository extends CrudRepository<VSgpVendedoresActivos, Long> {
     
     @Override
-    @Query(value = "SELECT * FROM GAMBLE.V_SGP_VENDEDORES_ACTIVOS", nativeQuery = true)
+    @Query(value = "SELECT * FROM NOMINA.V_SGP_VENDEDORES_ACTIVOS", nativeQuery = true)
     java.util.List<VSgpVendedoresActivos>findAll();
     
-    @Query(value = "SELECT * FROM GAMBLE.V_SGP_VENDEDORES_ACTIVOS WHERE CEDULA = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM NOMINA.V_SGP_VENDEDORES_ACTIVOS WHERE CEDULA = ?1", nativeQuery = true)
     public VSgpVendedoresActivos findVendedorByDocumento(@Param("doc") String doc);
     
 }

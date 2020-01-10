@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -26,43 +28,40 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 
-public class VSgpZonavscdavspuntos {
+public class VSgpZonavscdavspuntos implements Serializable {
 
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CODIGOZONA")
+    
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigozona;
-    @Size(max = 4000)
-    @Column(name = "NOMBREZONA")
     private String nombrezona;
-    @Size(max = 5)
-    @Column(name = "CODIGODANECDA")
-    private String codigodanecda;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CODIGOCDA")
     private int codigocda;
-    @Size(max = 4000)
-    @Column(name = "NOMBRECDA")
     private String nombrecda;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "CODIGOPUNTO")
     private int codigopunto;
-    @Size(max = 4000)
-    @Column(name = "NOMBREPUNTO")
     private String nombrepunto;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "FECHAINICIO")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechainicio;
-    @Column(name = "FECHAFINAL")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechafinal;
+    private java.sql.Date fechainicio;
+    private java.sql.Date fechafinal;
+    private String codigodane;
+    private String nombrepuntoalterno;
+    private String tipopunto;
+    
+    
 
     public VSgpZonavscdavspuntos() {
+    }
+
+    public VSgpZonavscdavspuntos(int codigozona, String nombrezona, int codigocda, String nombrecda, int codigopunto, String nombrepunto, java.sql.Date fechainicio, java.sql.Date fechafinal, String codigodane, String nombrepuntoalterno, String tipopunto) {
+        this.codigozona = codigozona;
+        this.nombrezona = nombrezona;
+        this.codigocda = codigocda;
+        this.nombrecda = nombrecda;
+        this.codigopunto = codigopunto;
+        this.nombrepunto = nombrepunto;
+        this.fechainicio = fechainicio;
+        this.fechafinal = fechafinal;
+        this.codigodane = codigodane;
+        this.nombrepuntoalterno = nombrepuntoalterno;
+        this.tipopunto = tipopunto;
     }
 
     public int getCodigozona() {
@@ -79,14 +78,6 @@ public class VSgpZonavscdavspuntos {
 
     public void setNombrezona(String nombrezona) {
         this.nombrezona = nombrezona;
-    }
-
-    public String getCodigodanecda() {
-        return codigodanecda;
-    }
-
-    public void setCodigodanecda(String codigodanecda) {
-        this.codigodanecda = codigodanecda;
     }
 
     public int getCodigocda() {
@@ -121,20 +112,48 @@ public class VSgpZonavscdavspuntos {
         this.nombrepunto = nombrepunto;
     }
 
-    public Date getFechainicio() {
+    public java.sql.Date getFechainicio() {
         return fechainicio;
     }
 
-    public void setFechainicio(Date fechainicio) {
+    public void setFechainicio(java.sql.Date fechainicio) {
         this.fechainicio = fechainicio;
     }
 
-    public Date getFechafinal() {
+    public java.sql.Date getFechafinal() {
         return fechafinal;
     }
 
-    public void setFechafinal(Date fechafinal) {
+    public void setFechafinal(java.sql.Date fechafinal) {
         this.fechafinal = fechafinal;
     }
+
+    public String getCodigodane() {
+        return codigodane;
+    }
+
+    public void setCodigodane(String codigodane) {
+        this.codigodane = codigodane;
+    }
+
+    public String getNombrepuntoalterno() {
+        return nombrepuntoalterno;
+    }
+
+    public void setNombrepuntoalterno(String nombrepuntoalterno) {
+        this.nombrepuntoalterno = nombrepuntoalterno;
+    }
+
+    public String getTipopunto() {
+        return tipopunto;
+    }
+
+    public void setTipopunto(String tipopunto) {
+        this.tipopunto = tipopunto;
+    }
+
+   
+
+   
     
 }
